@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>NP button</title>
+  <link rel="stylesheet" herf="./index.css">
+
+</head>
+<style>
+  ul{
+    list-style: none;
+    padding-left: 0;
+  }
+
+
+  body {
+    margin: 0;
+    padding: 0;
+    padding-bottom: 3rem;
+    text-align:center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    min-width:200px;
+  }
+
+  main{
+    margin-left:auto;
+    margin-right:auto;
+    text-align:left;
+    width:600px;
+  }
+
+  .btn-slip {
+    display: inline-block;
+    padding: 12px 12px;
+    font-weight: bold;
+    border-radius: 4px;
+    background-color: #6A91C1;
+    box-shadow: 0px 2px 2px 1px #CCCCCC;
+    border-bottom: solid 5px #516C8D;
+    text-decoration: none;
+    color: #fff;
+  }
+
+  .btn-slip:hover {
+    box-shadow: none;
+    position: relative;
+    border-bottom: none;
+    top: 7px;
+  }
+
+</style>
+
+<body>
+  <ul id="loggedInUsers"></ul>
+  <div id="npbutton" class="btn-slip">意見ありません</div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+  <script>
+    var socket = io();
+    var input = document.getElementById('input');
+
+    var name = prompt("学籍番号と名前を入力してください");
+    if (name == "") name = "unknown";
+    if (name == "null") name = "unknown";
+    socket.emit("nickname", name);
+    alert('こんにちは' + name + 'さん！');
+
+
+
+    socket.on('loggedInUsers', function (onlineUsers) {
+
+      const parent = document.getElementById('loggedInUsers');
+      while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+      };
+      for (let item of onlineUsers) {
+        const li = `<li id="${item.id}">${item.name}</li>`;
+        console.log(item);
+
+
+        document.getElementById('loggedInUsers').insertAdjacentHTML('beforeend', li);
+
+
+      }
+    });
+
+
+    socket.on('namelist', function (data) {
+
+    });
+
+
+    const btn = document.getElementById('npbutton');
+
+
+
+    btn.addEventListener("click", e => {
+
+      socket.emit('NoOpinions')
+
+      console.log('click');
+
+
+    });
+
+    btn.addEventListener("dblclick", e => {
+
+      socket.emit('HaveOpinions')
+
+      console.log('dblclick');
+
+    });
+
+
+
+    socket.on('NoOpinions', (u) => {
+      console.log(u);
+
+      const visible = function () {
+        li.style.visibility = 'visible';
+        //li.style.opacity = 1;
+        // li.animate([{opacity: '0'},{opacity: '1'}], 1500);
+        //$('li').fadeIn(1500);
+      };
+
+      const li = document.getElementById(u.id);
+      li.style.visibility = 'hidden';
+      //li.style.opacity = 0;
+
+      setTimeout(visible, 60000);
+
+    });
+
+
+    socket.on('HaveOpinions', (u) => {
+      const li = document.getElementById(u.id);
+      li.style.visibility = 'visible';
+    });
+
+
+    //const btn2 = document.getElementById('pbutton');
+
+
+
+   // btn2.addEventListener("click", e => {
+
+      //socket.emit('HaveOpinions2')
+
+      //console.log('click');
+
+
+    //});
+
+    //socket.on('HaveOpinions2', (u) => {
+      //const li = document.getElementById(u.id);
+      //li.innerHTML = name + " はい"
+    //});
+
+
+
+
+  </script>
+</body>
+
+</html>
