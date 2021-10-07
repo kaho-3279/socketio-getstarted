@@ -6,9 +6,13 @@
   "scripts": {
     "start": "index.js"
   },
+  "engines": {
+    "node": "14.x"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "ejs": "^3.1.6",
     "express": "^4.17.1",
     "mongoose": "^5.13.2",
     "socket.io": "^4.1.2"
