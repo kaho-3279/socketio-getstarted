@@ -4,7 +4,6 @@ const http = require('http');
 const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
-const port = process.env.PORT || 3000
 
 const MONGODB_URL = "mongodb+srv://enshu:W6KkwVALBknt0CFN@enshu.l3808.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
@@ -93,9 +92,11 @@ io.on('connection', (socket) => {
   });
 });
 
-app.listen(port, () => {
-  console.log('Server is up on port ' + port)
-}) 
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 8000;
+}
+app.listen(port);
 
 
 //server.listen(3000, () => {
