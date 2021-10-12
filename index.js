@@ -95,16 +95,16 @@ io.on('connection', (socket) => {
 
 });
 
-//let port = process.env.PORT;
-//if (port == null || port == "") {
-  //port = 8000;
-//}
-//app.listen(port);
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 8000;
+}
+app.listen(port);
 
 
 
 
-server.listen(3000, () => {
-  console.log('listening on *:3000');
-});
+//server.listen(3000, () => {
+  //console.log('listening on *:3000');
+//});
 
