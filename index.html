@@ -78,14 +78,14 @@
 .frame-title .fa {
  margin-right: 5px;
 }
-.caution {
- background-color: #ff4500;
- border: 2px solid #ff4500;
+.guide {
+ background-color: #777777;
+ border: 2px solid #777777;
  color: #fff;
  border-radius: 3px;
 }
-.frame-red {
- border-color: #ff4500;
+.frame-grey {
+ border-color: #777777;
 }
 
 </style>
@@ -93,12 +93,13 @@
 <body>
   <ul id="loggedInUsers"></ul>
   <div id="npbutton" class="btn-slip">意見ありません</div>
-  <div class="frame frame-red">
-    <div class="frame-title caution">
-      CAUTION
+  <div class="frame frame-grey">
+    <div class="frame-title guide">
+      GUIDE
     </div>
     <p>
-      ここにテキストが入ります
+      ボタンをクリックすると自分の名前が非表示になります。
+      30秒経過orダブルクリックで再表示
     </p>
   </div>
   <script src="/socket.io/socket.io.js"></script>
