@@ -59,12 +59,48 @@
     top: 7px;
   }
 
+  .frame {
+ width: 80%;
+ margin: 30px auto 20px;
+ padding: 30px 20px 0;
+ border: 3px solid #aaa;
+ position: relative;
+ border-radius: 3px;
+ background-color: #fff;
+}
+.frame-title {
+ position: absolute;
+ top: -13px;
+ left: 20px;
+ padding: 0 5px;
+ background-color: #fff;
+}
+.frame-title .fa {
+ margin-right: 5px;
+}
+.caution {
+ background-color: #ff4500;
+ border: 2px solid #ff4500;
+ color: #fff;
+ border-radius: 3px;
+}
+.frame-red {
+ border-color: #ff4500;
+}
+
 </style>
 
 <body>
   <ul id="loggedInUsers"></ul>
   <div id="npbutton" class="btn-slip">意見ありません</div>
-
+  <div class="frame frame-red">
+    <div class="frame-title caution">
+      CAUTION
+    </div>
+    <p>
+      ここにテキストが入ります
+    </p>
+  </div>
   <script src="/socket.io/socket.io.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
