@@ -41,6 +41,7 @@
   }
 
   .btn-slip {
+    position: relative;
     display: inline-block;
     padding: 12px 12px;
     font-weight: bold;
@@ -62,7 +63,7 @@
   .frame {
  width: 80%;
  margin: 30px auto 20px;
- padding: 15px 20px 0;
+ padding: 10px 20px 0;
  border: 3px solid #aaa;
  position: relative;
  border-radius: 3px;
@@ -115,8 +116,8 @@
     if (name == "") name = "unknown";
     if (name == "null") name = "unknown";
     socket.emit("nickname", name);
-    //alert('こんにちは' + name + 'さん！');
-    alert('ボタンをクリックすると' + name + 'さんの名前が非表示になります。意見がないときに押してください。30秒経過orダブルクリックで再表示');
+    alert('こんにちは' + name + 'さん！');
+    //alert('ボタンをクリックすると自分の名前が非表示になります。意見がないときに押してください。30秒経過orダブルクリックで再表示');
 
 
 
