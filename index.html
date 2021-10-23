@@ -90,6 +90,11 @@ main{
       while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
       };
+
+      onlineUsers.sort(function(){
+        return Math.random() - Math.random();
+      });
+
       for (let item of onlineUsers) {
         const li = `<li id="${item.id}">${item.name}</li>`;
         console.log(item);
