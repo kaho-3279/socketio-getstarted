@@ -61,49 +61,12 @@ main{
   top: 7px;
 }
 
-.frame {
-width: 80%;
-margin: 50px auto 20px;
-padding: 10px 20px 0;
-border: 3px solid #aaa;
-border-radius: 3px;
-background-color: #fff;
-position: relative;
 
-}
-.frame-title {
-position: absolute;
-top: -13px;
-left: 20px;
-padding: 0 5px;
-background-color: #fff;
-}
-.frame-title .fa {
-margin-right: 5px;
-}
-.guide {
-background-color: #777777;
-border: 2px solid #777777;
-color: #fff;
-border-radius: 3px;
-}
-.frame-grey {
-border-color: #777777;
-}
 </style>
 
 <body>
   <ul id="loggedInUsers"></ul>
   <div id="npbutton" class="btn-slip">意見ありません</div>
-  <div class="frame frame-grey">
-    <div class="frame-title guide">
-      GUIDE
-    </div>
-    <p>
-      ボタンをクリックすると自分の名前が非表示になります。<br>
-      30秒経過orダブルクリックで再表示
-    </p>
-  </div>
   <script src="/socket.io/socket.io.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
