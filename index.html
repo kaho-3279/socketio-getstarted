@@ -66,7 +66,8 @@ main{
 
 <body>
   <ul id="loggedInUsers"></ul>
-  <div id="npbutton" class="btn-slip">意見ありません
+  <div id="npbutton" class="btn-slip">意見ありません</div>
+  <div>
     <progress id="myProgress" value="max" max="100">0%</progress>
   </div>
   <script src="/socket.io/socket.io.js"></script>
@@ -76,6 +77,8 @@ main{
   <script>
     var socket = io();
     var input = document.getElementById('input');
+    var val;
+    var intervalID;
 
     var name = prompt("学籍番号と名前を入力してください");
     if (name == "") name = "unknown";
@@ -119,6 +122,8 @@ main{
 
 
     btn.addEventListener("click", e => {
+      val = 0;
+      intervalID = setInterval("updateProgress()", 30);
 
       socket.emit('NoOpinions')
 
@@ -126,6 +131,19 @@ main{
 
 
     });
+
+    function updateProgress(){
+      val += 1;
+      document.getElementById("myProgress").value = val;
+    document.getElementById("myProgress").innerText = val + "%";
+    console.log("progress:", val, "%");
+
+    if (val == 0) {
+      clearInterval(intervalID);
+      document.getElementById("npbutton").disabled = false;
+
+    }
+  }
 
     btn.addEventListener("dblclick", e => {
 
