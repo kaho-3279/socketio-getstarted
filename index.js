@@ -67,13 +67,6 @@ io.on('connection', (socket) => {
       //});
       
     });
-
-
-    const func = () => {
-      console.log("Hello");
-    }
-
-
   
 
     function buildEmitData(u) {
