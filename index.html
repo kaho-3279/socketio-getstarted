@@ -80,13 +80,32 @@ rgba(127, 194, 239, .5);
 rgb(127, 194, 239);
 }
 
+/* radio non-display */
+.add-control .radio{
+    display: none;
+}
+/* button control */
+.add-control #close:checked ~ .btn-close {
+    display: none;
+}
+.add-control #close:checked ~ .btn-open {
+    display: table;
+}
+.add-control #open:checked ~ .btn-close {
+    display: table;
+}
+.add-control #open:checked ~ .btn-open {
+    display: none;
+}
 
 </style>
 
 <body>
   <ul id="loggedInUsers"></ul>
+  <div class="add-control">
   <input type="radio" class="radio" id="npbutton" name="btn" /><label class="btn btn-open" for="open">意見ありません</label>
 <input type="radio" class="radio" id="pbutton" name="btn" checked="checked" /><label class="btn btn-close" for="close">復活</label>
+</div>
   <div class="progress">
     <progress id="p1" value="100" max="100">0%</progress>
   </div>
