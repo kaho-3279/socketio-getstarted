@@ -117,17 +117,17 @@ main{
 
     const btn = document.getElementById('npbutton');
 
-    //function proc1(){
+    function proc1(){
      // btn.disabled = true;
-     // if (document.getElementById('p1').value > 0 ) {
-	//	document.getElementById('p1').value--;
-	//	setTimeout(proc1, 300);
+      if (document.getElementById('p1').value > 0 ) {
+		document.getElementById('p1').value--;
+		setTimeout(proc1, 300);
 
 //	}else{
    // btn.disabled = false;
     //document.getElementById('p1').value = 100;
-  //}
-//}
+  }
+}
 
 
 
@@ -166,11 +166,6 @@ main{
       li.style.visibility = 'hidden';
       //li.style.opacity = 0;
 
-      btn.disabled = true;
-     if (document.getElementById('p1').value > 0 ) {
-		document.getElementById('p1').value--;
-		setTimeout(proc1, 300);
-     }
       setTimeout(visible, 30000);
 
     });
