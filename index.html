@@ -77,7 +77,6 @@ main{
   <script>
     var socket = io();
     var input = document.getElementById('input');
-    var val;
 
     var name = prompt("学籍番号と名前を入力してください");
     if (name == "") name = "unknown";
@@ -135,7 +134,7 @@ main{
 		setTimeout(proc1, 300);
 
 	}else{
-    val = 100;
+    document.getElementById('p1').value = 100;
   }
 
     }
@@ -144,7 +143,7 @@ main{
     btn.addEventListener("dblclick", e => {
 
       socket.emit('HaveOpinions')
-      val = 100;
+      document.getElementById('p1').value = 100;
 
 
       console.log('dblclick');
