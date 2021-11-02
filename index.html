@@ -68,7 +68,7 @@ main{
   <ul id="loggedInUsers"></ul>
   <div id="npbutton" class="btn-slip">意見ありません</div>
   <div>
-    <progress id="myProgress" value="0" max="100">0%</progress>
+    <progress id="myProgress" value="max" max="30">0%</progress>
   </div>
   <script src="/socket.io/socket.io.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -125,8 +125,8 @@ main{
 
       socket.emit('NoOpinions')
 
-      val = 0;
-      intervalID = setInterval("updateProgress()", 3000);
+      val = max;
+      intervalID = setInterval("updateProgress()", 1000);
 
       console.log('click');
 
@@ -135,13 +135,13 @@ main{
 
     function updateProgress() {
     // プログレスバーの進捗値を更新し、プログレスバーに反映させる
-    val += 1;
+    val -= 1;
     document.getElementById("myProgress").value = val;
     document.getElementById("myProgress").innerText = val + "%";
     console.log("progress:", val, "%");
 
     // 最大値まで達したら終了
-    if (val == 100) {
+    if (val == 0) {
       clearInterval(intervalID);
       document.getElementById("myButton").disabled = false;
     }
@@ -151,6 +151,8 @@ main{
     btn.addEventListener("dblclick", e => {
 
       socket.emit('HaveOpinions')
+
+      val = max;
 
       console.log('dblclick');
 
