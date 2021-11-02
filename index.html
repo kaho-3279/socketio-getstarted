@@ -129,6 +129,7 @@ main{
     });
 
     function proc1(){
+      document.getElementById('p1').value = 100;
       if (document.getElementById('p1').value > 0 ) {
 		document.getElementById('p1').value--;
 		setTimeout(proc1, 300);
