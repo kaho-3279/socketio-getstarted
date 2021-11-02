@@ -122,10 +122,11 @@ main{
 
 
     btn.addEventListener("click", e => {
-      val = 0;
-      intervalID = setInterval("updateProgress()", 300);
 
       socket.emit('NoOpinions')
+
+      val = 0;
+      intervalID = setInterval("updateProgress()", 3000);
 
       console.log('click');
 
