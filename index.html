@@ -66,9 +66,9 @@ main{
 
 <body>
   <ul id="loggedInUsers"></ul>
-  <div id="npbutton" class="btn-slip">意見ありません</div>
+  <div id="npbutton" class="btn-slip" onclick="proc1();">意見ありません</div>
   <div>
-    <progress id="myProgress" value="max" max="30">0%</progress>
+    <progress id="p1" value="0" max="100">0%</progress>
   </div>
   <script src="/socket.io/socket.io.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -77,8 +77,6 @@ main{
   <script>
     var socket = io();
     var input = document.getElementById('input');
-    var val;
-    var intervalID;
 
     var name = prompt("学籍番号と名前を入力してください");
     if (name == "") name = "unknown";
@@ -125,34 +123,23 @@ main{
 
       socket.emit('NoOpinions')
 
-      val = max;
-      intervalID = setInterval("updateProgress()", 1000);
-
       console.log('click');
 
 
     });
 
-    function updateProgress() {
-    // プログレスバーの進捗値を更新し、プログレスバーに反映させる
-    val -= 1;
-    document.getElementById("myProgress").value = val;
-    document.getElementById("myProgress").innerText = val + "%";
-    console.log("progress:", val, "%");
-
-    // 最大値まで達したら終了
-    if (val == 0) {
-      clearInterval(intervalID);
-      document.getElementById("myButton").disabled = false;
+    function proc1(){
+      if (document.getElementById('p1').value < 100 ) {
+		document.getElementById('p1').value++;
+		setTimeout(proc1, 100);
+	}
     }
-  }
 
 
     btn.addEventListener("dblclick", e => {
 
       socket.emit('HaveOpinions')
 
-      val = max;
 
       console.log('dblclick');
 
