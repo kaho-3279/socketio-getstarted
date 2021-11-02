@@ -61,16 +61,32 @@ main{
   top: 7px;
 }
 
-.progress{
-  color: green; 
-
+.btn {
+    color: 
+#fff;
+    background: 
+rgba(127, 194, 239, .5);
+    padding: .3em .5em;
+    margin-bottom: .3em;
+    border-radius: .3em;
+    text-align: center;
+    display: table; 
 }
+.btn:hover {
+    cursor: pointer;    
+}
+.btn:active {
+    background: 
+rgb(127, 194, 239);
+}
+
 
 </style>
 
 <body>
   <ul id="loggedInUsers"></ul>
-  <div id="npbutton" class="btn-slip" onclick="proc1();">意見ありません</div>
+  <input type="radio" class="radio" id="npbutton" name="btn" /><label class="btn btn-open" for="open">意見ありません</label>
+<input type="radio" class="radio" id="pbutton" name="btn" checked="checked" /><label class="btn btn-close" for="close">復活</label>
   <div class="progress">
     <progress id="p1" value="100" max="100">0%</progress>
   </div>
