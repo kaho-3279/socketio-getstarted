@@ -66,7 +66,7 @@ main{
 
 <body>
   <ul id="loggedInUsers"></ul>
-  <div id="npbutton" class="btn-slip" onclick="proc1();">意見ありません</div>
+  <div id="npbutton" class="btn-slip" onclick="proc1();" ondblclick="proc2();">意見ありません</div>
   <div>
     <progress id="p1" value="100" max="100">0%</progress>
   </div>
@@ -139,11 +139,14 @@ main{
 
     }
 
+    function proc2(){
+      document.getElementById('p1').value = 100;
+    }
+
 
     btn.addEventListener("dblclick", e => {
 
       socket.emit('HaveOpinions')
-      document.getElementById('p1').value = 100;
 
 
       console.log('dblclick');
