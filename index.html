@@ -61,13 +61,20 @@ main{
   top: 7px;
 }
 
+.progress{
+  color: green; 
+
+}
+
 </style>
 
 <body>
   <ul id="loggedInUsers"></ul>
   <div id="npbutton" class="btn-slip" onclick="proc1();">意見ありません</div>
   <div class="progress">
-    <progress id="p1" value="100" max="100">0%</progress>
+    <div id="p1" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+      <span class="sr-only">0%</span>
+    </div>
   </div>
   <script src="/socket.io/socket.io.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
