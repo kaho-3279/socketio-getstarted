@@ -129,16 +129,16 @@ main{
     });
 
     function proc1(){
-     btn.disabled = true;
       if (document.getElementById('p1').value > 0 ) {
+        btn.disabled = true;
 		document.getElementById('p1').value--;
 		setTimeout(proc1, 300);
 
-	}else if(document.getElementById('p1').value = 0){
+	}
     btn.disabled = false;
     document.getElementById('p1').value = 100;
   }
-  }
+  
 
 
 
