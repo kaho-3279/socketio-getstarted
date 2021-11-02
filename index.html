@@ -133,12 +133,15 @@ main{
 		document.getElementById('p1').value--;
 		setTimeout(proc1, 300);
 	}
+
+  value = 100;
     }
 
 
     btn.addEventListener("dblclick", e => {
 
       socket.emit('HaveOpinions')
+      value = 100;
 
 
       console.log('dblclick');
