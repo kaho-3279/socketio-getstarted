@@ -73,7 +73,6 @@ main{
   transition: none;
   color: #fff;
 }
-
 .btn:hover {
     cursor: pointer;    
 }
@@ -84,30 +83,33 @@ main{
   top: 7px;
 }
 
-.add-control .chk{
+/* radio non-display */
+.add-control .radio{
+    display: none;
+}
+/* button control */
+.add-control #pbutton:checked ~ .btn-pbutton {
+    display: none;
+}
+.add-control #pbutton:checked ~ .btn-npbutton {
+    display: table;
+}
+.add-control #npbutton:checked ~ .btn-pbutton {
+    display: table;
+}
+.add-control #npbutton:checked ~ .btn-npbutton {
     display: none;
 }
 
-/* button control */
-.add-control #npbutton ~ .btn-npbutton .open {
-    display: inline;
-}
-.add-control #npbutton ~ .btn-npbutton .close {
-    display: none;
-}
-.add-control #npbutton:checked ~ .btn-npbutton .open {
-    display: none;
-}
-.add-control #npbutton:checked ~ .btn-npbutton .close {
-    display: inline;
-}
 
 </style>
 
 <body>
   <ul id="loggedInUsers"></ul>
   <div class="add-control">
-    <input type="checkbox" class="chk" id="npbutton" name="btn"><label class="btn btn-npbutton" for="npbutton"><span class="open">意見ありません</span><span class="close">復活</span></label>
+    <input type="radio" class="radio" id="npbutton" name="btn" /><label class="btn btn-npbutton" for="npbutton">開く</label>
+    <input type="radio" class="radio" id="pbutton" name="btn" checked="checked" /> 
+    <label class="btn btn-pbutton" for="pbutton">閉じる</label>
 </div>
   <div class="progress">
     <progress id="p1" value="100" max="100">0%</progress>
