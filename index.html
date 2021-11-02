@@ -117,17 +117,6 @@ main{
 
     const btn = document.getElementById('npbutton');
 
-
-
-    btn.addEventListener("click", e => {
-
-      socket.emit('NoOpinions')
-
-      console.log('click');
-
-
-    });
-
     function proc1(){
       if (document.getElementById('p1').value > 0 ) {
         btn.disabled = true;
@@ -139,6 +128,17 @@ main{
     document.getElementById('p1').value = 100;
   }
 }
+
+
+
+    btn.addEventListener("click", e => {
+
+      socket.emit('NoOpinions')
+
+      console.log('click');
+
+
+    });
   
 
 
