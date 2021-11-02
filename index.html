@@ -66,7 +66,7 @@ main{
 
 <body>
   <ul id="loggedInUsers"></ul>
-  <div id="npbutton" class="btn-slip" onclick="proc1();" ondblclick="proc2();">意見ありません</div>
+  <div id="npbutton" class="btn-slip" onclick="proc1();">意見ありません</div>
   <div>
     <progress id="p1" value="100" max="100">0%</progress>
   </div>
@@ -139,10 +139,6 @@ main{
 
     }
 
-    function proc2(){
-      document.getElementById('p1').value = 100;
-    }
-
 
     btn.addEventListener("dblclick", e => {
 
@@ -160,9 +156,7 @@ main{
 
       const visible = function () {
         li.style.visibility = 'visible';
-        //li.style.opacity = 1;
-        // li.animate([{opacity: '0'},{opacity: '1'}], 1500);
-        //$('li').fadeIn(1500);
+     
       };
 
       const li = document.getElementById(u.id);
@@ -177,6 +171,7 @@ main{
     socket.on('HaveOpinions', (u) => {
       const li = document.getElementById(u.id);
       li.style.visibility = 'visible';
+      document.getElementById('p1').value = 100;
     });
 
 
