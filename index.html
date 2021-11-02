@@ -62,22 +62,30 @@ main{
 }*/
 
 .btn {
-    color: 
-#fff;
-    background: 
-rgba(127, 194, 239, .5);
-    padding: .3em .5em;
-    margin-bottom: .3em;
-    border-radius: .3em;
-    text-align: center;
-    display: table; 
+  display: inline-block;
+  padding: 12px 12px;
+  font-weight: bold;
+  border-radius: 4px;
+  background-color: #6A91C1;
+  box-shadow: 0px 2px 2px 1px #CCCCCC;
+  border-bottom: solid 5px #516C8D;
+  -webkit-transition: none;
+  transition: none;
+  color: #fff;
 }
+
 .btn:hover {
     cursor: pointer;    
 }
 .btn:active {
-    background: 
-rgb(127, 194, 239);
+  box-shadow: none;
+  position: relative;
+  border-bottom: none;
+  top: 7px;
+}
+
+.add-control .chk{
+    display: none;
 }
 
 /* button control */
@@ -102,7 +110,7 @@ rgb(127, 194, 239);
 <body>
   <ul id="loggedInUsers"></ul>
   <div class="add-control">
-    <input type="checkbox" class="chk" id="open-close" name="btn"><label class="btn btn-open-close" for="open-close"><span class="open">開く</span><span class="close">閉じる</span></label>
+    <input type="checkbox" class="chk" id="npbutton" name="btn"><label class="btn btn-open-close" for="open-close"><span class="open">意見ありません</span><span class="close">復活</span></label>
 </div>
   <div class="progress">
     <progress id="p1" value="100" max="100">0%</progress>
