@@ -118,8 +118,8 @@ main{
     const btn = document.getElementById('npbutton');
 
     function proc1(){
+      btn.disabled = true;
       if (document.getElementById('p1').value > 0 ) {
-        btn.disabled = true;
 		document.getElementById('p1').value--;
 		setTimeout(proc1, 300);
 
