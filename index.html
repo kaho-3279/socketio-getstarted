@@ -32,7 +32,8 @@ body {
 main{
   margin-left:auto;
   margin-right:auto;
-  text-align:left;
+  /*text-align:left;*/
+  text-align:center;
   max-width:600px;
 }
 
@@ -84,28 +85,7 @@ main{
   top: 7px;
 }
 
-.btn2 {
-  display: inline-block;
-  padding: 12px 12px;
-  font-weight: bold;
-  border-radius: 4px;
-  background-color: #6A91C1;
-  box-shadow: 0px 2px 2px 1px #CCCCCC;
-  border-bottom: solid 5px #516C8D;
-  -webkit-transition: none;
-  transition: none;
-  color: #fff;
-}
 
-.btn2:hover:hover {
-    cursor: pointer;    
-}
-.btn2:active {
-  box-shadow: none;
-  position: relative;
-  border-bottom: none;
-  top: 7px;
-}
 
 /* radio non-display */
 .add-control .radio{
@@ -132,7 +112,7 @@ main{
   <ul id="loggedInUsers"></ul>
   <div class="add-control">
     <input type="radio" class="radio" id="npbutton" name="btn" onclick="proc1();"/><label class="btn btn-npbutton" for="npbutton">意見ありません</label>
-    <input type="radio" class="radio" id="pbutton" name="btn2" checked="checked" onclick="proc2();"/> <label class="btn btn-pbutton" for="pbutton">復活</label>
+    <input type="radio" class="radio" id="pbutton" name="btn" checked="checked" onclick="proc2();"/> <label class="btn btn-pbutton" for="pbutton">復活</label>
 </div>
   <div class="progress">
     <progress id="p1" value="100" max="100">0%</progress>
