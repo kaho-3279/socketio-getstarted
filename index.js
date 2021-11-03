@@ -58,6 +58,10 @@ io.on('connection', (socket) => {
         io.emit('NoOpinions', buildEmitData(u));
       });
 
+      socket.on('ShowName' , () => {
+        io.emit('ShowName' , buildEmitData(u));
+      });
+
       socket.on('HaveOpinions' , () => {
         io.emit('HaveOpinions' , buildEmitData(u));
       });
