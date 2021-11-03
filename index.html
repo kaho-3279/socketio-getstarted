@@ -219,7 +219,7 @@ function proc2(){
       const visible = function () {
         li.style.visibility = 'visible';
 
-       // btn.style.visibility = 'visible';
+       btn.style.visibility = 'visible';
 
       };
 
@@ -229,14 +229,16 @@ function proc2(){
 
       setTimeout(visible, 30000);
 
-     btn.style.visibility = 'visible';
-     btn2.style.visibility = 'hidden';
+     //btn.style.visibility = 'visible';
+     //btn2.style.visibility = 'hidden';
 
     });
 
     socket.on('ShowName', (u) => {
       const li = document.getElementById(u.id);
       li.style.visibility = 'visible';
+      
+
     });
 
 
