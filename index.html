@@ -139,9 +139,7 @@
   <script src="/socket.io/socket.io.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.14.2/xlsx.full.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script>
-
+    
   <script>
     var socket = io();
     var input = document.getElementById('input');
@@ -178,35 +176,7 @@
       }
     });
 
-//ここから
 
-    function sheet_to_workbook(sheet/*:Worksheet*/, opts)/*:Workbook*/ {
-      var n = opts && opts.sheet ? opts.sheet : "Sheet1";
-      var sheets = {}; sheets[n] = sheet;
-      return { SheetNames: [n], Sheets: sheets };
-    }
-
-    function s2ab(s) {
-      var buf = new ArrayBuffer(s.length);
-      var view = new Uint8Array(buf);
-      for (var i = 0; i != s.length; ++i) view[i] = s.charCodeAt(i) & 0xFF;
-        return buf;
-      }
-
-      function func1() {
-        var write_opts = {
-      type: 'binary'
-    };
-
-    var wb = aoa_to_workbook(onlineUsers);
-    var wb_out = XLSX.write(wb, write_opts);
-
-    var blob = new Blob([s2ab(wb_out)], { type: 'application/octet-stream' });
-
-    saveAs(blob, 'myExcelFile.xlsx');
-  }
-
-//ここまで
 
 
     socket.on('namelist', function (data) {
@@ -223,8 +193,12 @@
         document.getElementById('p1').value--;
         setTimeout(proc1, 300);
 
-      } else {
+      //} else{
         //btn.disabled = false;
+        //document.getElementById('p1').value == 100;
+      }
+
+      else if(document.getElementById('p1').value == 0){
         document.getElementById('p1').value == 100;
       }
       //if (document.getElementById('p1').value == 100){
