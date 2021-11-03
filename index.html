@@ -72,7 +72,6 @@ main{
   -webkit-transition: none;
   transition: none;
   color: #fff;
-  text-align: center;
 }
 
 .btn:hover {
@@ -85,9 +84,7 @@ main{
   top: 7px;
 }
 
-.add-control{
-  text-align: center;
-}
+
 
 
 /* radio non-display */
@@ -103,6 +100,17 @@ main{
 }
 .add-control #npbutton:checked ~ .btn-pbutton {
     display: table;
+
+    display: inline-block;
+  padding: 12px 12px;
+  font-weight: bold;
+  border-radius: 4px;
+  background-color: #6A91C1;
+  box-shadow: 0px 2px 2px 1px #CCCCCC;
+  border-bottom: solid 5px #516C8D;
+  -webkit-transition: none;
+  transition: none;
+  color: #fff;
 }
 .add-control #npbutton:checked ~ .btn-npbutton {
     display: none;
