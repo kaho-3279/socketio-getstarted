@@ -91,7 +91,7 @@
   }
 
   /* button control */
-  /*.add-control #pbutton:checked~.btn-pbutton {
+  .add-control #pbutton:checked~.btn-pbutton {
     display: none;
   }
 
@@ -122,7 +122,7 @@
 
   .add-control #npbutton:checked~.btn-npbutton {
     display: none;
-  }*/
+  }
 
 </style>
 
@@ -215,8 +215,8 @@
 
     btn.addEventListener("click", e => {
 
-      btn.style.visibility = 'visible';
-      btn2.style.visibility = 'hidden';
+      //btn.style.visibility = 'visible';
+      //btn2.style.visibility = 'hidden';
 
       socket.emit('NoOpinions')
 
@@ -251,9 +251,8 @@
       const visible = function () {
         li.style.visibility = 'visible';
 
-        // const btn = document.getElementById('npbutton');
-        btn.style.visibility = 'visible';
-        btn2.style.visibility = 'hidden';
+        //btn.style.visibility = 'visible';
+        //btn2.style.visibility = 'hidden';
 
       };
 
@@ -272,8 +271,8 @@
       const li = document.getElementById(u.id);
       li.style.visibility = 'visible';
 
-      btn.style.visibility = 'hidden';
-      btn2.style.visibility = 'visible';
+      //btn.style.visibility = 'hidden';
+      //btn2.style.visibility = 'visible';
 
 
     });
