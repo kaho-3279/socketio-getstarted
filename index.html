@@ -4,43 +4,43 @@
 <head>
   <title>NP button</title>
   <link rel="stylesheet" type="text/css" href="./index.css">
-  <meta name="viewport" content="width=300" >
+  <meta name="viewport" content="width=300">
 </head>
 <style>
-  ul{
-  list-style: none;
-  padding-left: 0;
-}
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
 
-html{
-  font-size: 62.5%;
-}
-
-
-body {
-  margin: 0;
-  padding: 0;
-  padding-bottom: 3rem;
-  text-align:center;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  min-width:200px;
-  font-size: 1.6rem;
-  -webkit-text-size-adjust : 100% ;
-}
+  html {
+    font-size: 62.5%;
+  }
 
 
-main{
-  margin-left:auto;
-  margin-right:auto;
-  text-align:left;
-  max-width:600px;
-}
+  body {
+    margin: 0;
+    padding: 0;
+    padding-bottom: 3rem;
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    min-width: 200px;
+    font-size: 1.6rem;
+    -webkit-text-size-adjust: 100%;
+  }
 
-#wrap { 
-  overflow : hidden ; 
-}
 
-/*.btn-slip {
+  main {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    max-width: 600px;
+  }
+
+  #wrap {
+    overflow: hidden;
+  }
+
+  /*.btn-slip {
   display: inline-block;
   padding: 12px 12px;
   font-weight: bold;
@@ -61,70 +61,71 @@ main{
   top: 7px;
 }*/
 
-.btn {
-  display: inline-block;
-  padding: 12px 12px;
-  font-weight: bold;
-  border-radius: 4px;
-  background-color: #6A91C1;
-  box-shadow: 0px 2px 2px 1px #CCCCCC;
-  border-bottom: solid 5px #516C8D;
-  -webkit-transition: none;
-  transition: none;
-  color: #fff;
-}
-
-.btn:hover {
-    cursor: pointer;    
-}
-.btn:active {
-  box-shadow: none;
-  position: relative;
-  border-bottom: none;
-  top: 7px;
-}
-
-
-
-
-/* radio non-display */
-.add-control .radio{
-    display: none;
-}
-/* button control */
-.add-control #pbutton:checked ~ .btn-pbutton {
-    display: none;
-}
-.add-control #pbutton:checked ~ .btn-npbutton {
-    display: table;
-}
-.add-control #npbutton:checked ~ .btn-pbutton {
-    display: table;
-
+  .btn {
     display: inline-block;
-  padding: 12px 12px;
-  font-weight: bold;
-  border-radius: 4px;
-  background-color: #6A91C1;
-  box-shadow: 0px 2px 2px 1px #CCCCCC;
-  border-bottom: solid 5px #516C8D;
-  -webkit-transition: none;
-  transition: none;
-  color: #fff;
-}
-.add-control #npbutton:checked ~ .btn-npbutton {
+    padding: 12px 12px;
+    font-weight: bold;
+    border-radius: 4px;
+    background-color: #6A91C1;
+    box-shadow: 0px 2px 2px 1px #CCCCCC;
+    border-bottom: solid 5px #516C8D;
+    -webkit-transition: none;
+    transition: none;
+    color: #fff;
+  }
+
+  .btn:hover {
+    cursor: pointer;
+  }
+
+  .btn:active {
+    box-shadow: none;
+    position: relative;
+    border-bottom: none;
+    top: 7px;
+  }
+
+  /* radio non-display */
+  .add-control .radio {
     display: none;
-}
+  }
 
+  /* button control */
+  .add-control #pbutton:checked~.btn-pbutton {
+    display: none;
+  }
 
+  .add-control #pbutton:checked~.btn-npbutton {
+    display: table;
+  }
+
+  .add-control #npbutton:checked~.btn-pbutton {
+    display: table;
+    display: inline-block;
+    padding: 12px 12px;
+    font-weight: bold;
+    border-radius: 4px;
+    background-color: #EB902A;
+    box-shadow: 0px 2px 2px 1px #CCCCCC;
+    border-bottom: solid 5px #AB691F;
+    -webkit-transition: none;
+    transition: none;
+    color: #fff;
+  }
+
+  .add-control #npbutton:checked~.btn-npbutton {
+    display: none;
+  }
 </style>
 
 <body>
   <ul id="loggedInUsers"></ul>
   <div class="add-control">
-    <input type="radio" class="radio" id="npbutton" name="btn" onclick="proc1();"/><label class="btn btn-npbutton" for="npbutton">意見ありません</label>
-    <input type="radio" class="radio" id="pbutton" name="btn" checked="checked" onclick="proc2();"/> <label class="btn btn-pbutton" for="pbutton">復活</label>
-</div>
+    <input type="radio" class="radio" id="npbutton" name="btn" onclick="proc1();" /><label class="btn btn-npbutton"
+      for="npbutton">意見ありません</label>
+    <input type="radio" class="radio" id="pbutton" name="btn" checked="checked" onclick="proc2();" /> <label
+      class="btn btn-pbutton" for="pbutton">復活</label>
+  </div>
   <div class="progress">
     <progress id="p1" value="100" max="100">0%</progress>
   </div>
@@ -153,7 +154,7 @@ main{
         parent.removeChild(parent.firstChild);
       };
 
-      onlineUsers.sort(function(){
+      onlineUsers.sort(function () {
         return Math.random() - Math.random();
       });
 
@@ -177,24 +178,24 @@ main{
     const btn = document.getElementById('npbutton');
     const btn2 = document.getElementById('pbutton');
 
-    function proc1(){
+    function proc1() {
       //btn.disabled = true;
-      if (document.getElementById('p1').value > 0 ) {
-		document.getElementById('p1').value--;
-		setTimeout(proc1, 300);
+      if (document.getElementById('p1').value > 0) {
+        document.getElementById('p1').value--;
+        setTimeout(proc1, 300);
 
-	}else{
-    //btn.disabled = false;
-    document.getElementById('p1').value == 100;
-  }
-  //if (document.getElementById('p1').value == 100){
-    //clearInterval(intervalID);
-  //}
-}
+      } else {
+        //btn.disabled = false;
+        document.getElementById('p1').value == 100;
+      }
+      //if (document.getElementById('p1').value == 100){
+      //clearInterval(intervalID);
+      //}
+    }
 
-function proc2(){
-  document.getElementById('p1').value == 100;
-}
+    function proc2() {
+      document.getElementById('p1').value == 100;
+    }
 
 
 
@@ -212,7 +213,7 @@ function proc2(){
       socket.emit('ShowName')
 
     });
-  
+
 
 
 
@@ -233,8 +234,8 @@ function proc2(){
       const visible = function () {
         li.style.visibility = 'visible';
 
-       // const btn = document.getElementById('npbutton');
-       //btn.style.visibility = 'visible';
+        // const btn = document.getElementById('npbutton');
+        //btn.style.visibility = 'visible';
 
       };
 
@@ -244,15 +245,15 @@ function proc2(){
 
       setTimeout(visible, 30000);
 
-     //btn.style.visibility = 'visible';
-     //btn2.style.visibility = 'hidden';
+      //btn.style.visibility = 'visible';
+      //btn2.style.visibility = 'hidden';
 
     });
 
     socket.on('ShowName', (u) => {
       const li = document.getElementById(u.id);
       li.style.visibility = 'visible';
-      
+
 
     });
 
