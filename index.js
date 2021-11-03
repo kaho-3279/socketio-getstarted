@@ -15,7 +15,6 @@ mongoose.connect(MONGODB_URL);
 
 
 const Users = mongoose.model("Post", { name: String });
-//const Users = mongoose.model("Post", { name: String , id: String});
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
@@ -62,9 +61,9 @@ io.on('connection', (socket) => {
         io.emit('ShowName' , buildEmitData(u));
       });
 
-      socket.on('HaveOpinions' , () => {
-        io.emit('HaveOpinions' , buildEmitData(u));
-      });
+      //socket.on('HaveOpinions' , () => {
+        //io.emit('HaveOpinions' , buildEmitData(u));
+     // });
 
       //socket.on('HaveOpinions2', () => {
         //io.emit('HaveOpinions2', buildEmitData(u));

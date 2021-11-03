@@ -224,14 +224,14 @@
 
 
 
-    btn.addEventListener("dblclick", e => {
+    //btn.addEventListener("dblclick", e => {
 
-      socket.emit('HaveOpinions')
+      //socket.emit('HaveOpinions')
 
 
-      console.log('dblclick');
+     // console.log('dblclick');
 
-    });
+    //});
 
 
 
@@ -265,10 +265,10 @@
     });
 
 
-    socket.on('HaveOpinions', (u) => {
-      const li = document.getElementById(u.id);
-      li.style.visibility = 'visible';
-    });
+   // socket.on('HaveOpinions', (u) => {
+     // const li = document.getElementById(u.id);
+      //li.style.visibility = 'visible';
+    //});
 
 
 
