@@ -169,9 +169,9 @@ main{
 		document.getElementById('p1').value--;
 		setTimeout(proc1, 300);
 
-	//}else{
+	}else{
     //btn.disabled = false;
-    //document.getElementById('p1').value = 100;
+    document.getElementById('p1').value == 100;
   }
   //if (document.getElementById('p1').value == 100){
     //clearInterval(intervalID);
@@ -219,6 +219,7 @@ function proc2(){
       const visible = function () {
         li.style.visibility = 'visible';
 
+        const btn = document.getElementById('npbutton');
        btn.style.visibility = 'visible';
 
       };
