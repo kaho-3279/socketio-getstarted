@@ -188,23 +188,16 @@
     const btn2 = document.getElementById('pbutton');
 
     function proc1() {
-      //btn.disabled = true;
+    
       if (document.getElementById('p1').value > 0) {
         document.getElementById('p1').value--;
         setTimeout(proc1, 300);
 
-      //} else{
-        //btn.disabled = false;
-        //document.getElementById('p1').value == 100;
 
       }else if(document.getElementById('p1').value == 0){
         document.getElementById('p1').value = 100;
       
       }
-
-      $('.btn-pbutton').on('click', function(){
-        document.getElementById('p1').value = 100;
-      });
 
       //if (document.getElementById('p1').value == 100){
       //clearInterval(intervalID);
@@ -229,6 +222,7 @@
     });
 
     btn2.addEventListener("click", e => {
+      document.getElementById('p1').value = 100;
 
       socket.emit('ShowName')
 
