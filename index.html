@@ -151,7 +151,6 @@
     if (name == "null") name = "unknown";
     socket.emit("nickname", name);
     alert('こんにちは' + name + 'さん！');
-    //alert('ボタンをクリックすると自分の名前が非表示になります。意見がないときに押してください。30秒経過orダブルクリックで再表示');
 
 
 
@@ -187,12 +186,13 @@
 
     const btn = document.getElementById('npbutton');
     const btn2 = document.getElementById('pbutton');
+    let timer
 
     function proc1() {
     
       if (document.getElementById('p1').value > 0) {
         document.getElementById('p1').value--;
-        setTimeout(proc1, 300);
+        timer = setTimeout(proc1, 300);
 
 
       }else if(document.getElementById('p1').value == 0){
@@ -206,10 +206,11 @@
     }
 
     function proc2() {
-      if (document.getElementById('p1').value < 100) {
+      clearTimeout(timer);
       document.getElementById('p1').value = 100;
+    
     }
-  }
+  
 
 
 
