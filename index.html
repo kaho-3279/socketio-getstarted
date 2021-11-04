@@ -22,6 +22,7 @@
     align-items: center;
     margin-right: auto;
     margin-left: auto;
+    padding-left: 0;
   }
 
   /*ul > li{
@@ -43,6 +44,8 @@
     height: 20px;
     min-width: 50px;
     border-radius: 7px;
+    /*justify-content: center;
+    align-items: center;*/
   }
 
   ul>li:after {
@@ -62,6 +65,14 @@
     padding: 0;
   }
 
+  @media only screen and (max-device-width : 480px) {
+/* スマートフォンだけ以下を適用 */
+  	
+ul {
+ 		  width:100%;
+  	}
+  }
+
 
   html {
     font-size: 62.5%;
@@ -74,17 +85,18 @@
     padding-bottom: 3rem;
     text-align: center;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    /*min-width: 200px;
-    font-size: 1.0rem;*/
+    /*min-width: 200px;*/
+    font-size: 1.3rem;
     -webkit-text-size-adjust: 100%;
   }
 
 
-  main {
+  /*main {
     margin-left: auto;
     margin-right: auto;
     text-align: left;
-  }
+    text-align: center;
+  }*/
 
   #wrap {
     overflow: hidden;
