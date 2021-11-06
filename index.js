@@ -5,11 +5,13 @@ const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
 
-const MONGODB_URL = "mongodb+srv://enshu:W6KkwVALBknt0CFN@enshu.l3808.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+//const MONGODB_URL = "mongodb+srv://enshu:W6KkwVALBknt0CFN@enshu.l3808.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const MONGODB_URL = "mongodb+srv://np-button:2kj2U2IuXOkyf1m6@cluster0.yq1d5.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
 const mongoose = require("mongoose");
+mongoose.connect(MONGODB_URL, { useNewUrlParser: true });
 const { StringDecoder } = require('string_decoder');
-mongoose.connect(MONGODB_URL);
+//mongoose.connect(MONGODB_URL);
 
 
 
