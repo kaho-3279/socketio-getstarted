@@ -231,6 +231,7 @@ ul {
     var name = prompt("学籍番号と名前を入力してください");
     if (name == "") name = "unknown";
     if (name == "null") name = "unknown";
+
     socket.emit("nickname", name);
     alert('こんにちは' + name + 'さん！');
 
@@ -243,20 +244,6 @@ ul {
         parent.removeChild(parent.firstChild);
       };
 
-      //onlineUsers.sort(function () {
-      //return Math.random() - Math.random();
-      //});
-
-      //onlineUsers.sort(function (a, b) {
-      //return a - b;
-      //});
-
-
-      //function compareFunc(a, b){
-      //return a-b;
-      //}
-
-      //onlineUsers.sort(compareFunc);
 
       function compare(a, b) {
         const nameA = a.name.toUpperCase();
@@ -327,12 +314,12 @@ ul {
 
     btn.addEventListener("click", e => {
 
-      //btn.style.visibility = 'visible';
-      //btn2.style.visibility = 'hidden';
-
       socket.emit('NoOpinions')
 
-      console.log('click');
+      //var now = new Date();
+      //console.log('btnclicked', now);
+
+      //console.log('click');
 
 
     });
@@ -340,6 +327,9 @@ ul {
     btn2.addEventListener("click", e => {
 
       socket.emit('ShowName')
+     
+      //var now = new Date();
+      //console.log('btn2clicked', now);
 
     });
 

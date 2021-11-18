@@ -15,7 +15,7 @@
   "dependencies": {
     "ejs": "^3.1.6",
     "express": "^4.17.1",
-    "mongodb": "^4.4.10",
+    "mongodb": "^4.1.4",
     "mongoose": "^5.13.13",
     "socket.io": "^4.1.2"
   }

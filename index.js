@@ -16,7 +16,17 @@ const { StringDecoder } = require('string_decoder');
 
 
 
-const Users = mongoose.model("Post", { name: String });
+//const Users = mongoose.model("Post", { name: String });
+const userSchema = mongoose.Schema(
+  {
+    name: String,
+    now1: Date,
+    now2: Date
+    //date: { type: Date, default: Date.now},
+  },
+ // { timestamps: true }
+);
+const Users = mongoose.model("Post", userSchema);
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
@@ -33,9 +43,18 @@ io.on('connection', (socket) => {
     //if (!name) name = "unknown" 
 
     
-  
-    
-    const u = { name}; // 保存するデータ 
+    const u = { name};
+    //const u = { name, now};
+
+   /* Users.remove({ name: 'おかもと' }, function(err) {
+      if(err) {
+        console.log(err);
+      } else {
+        console.log("delete success.");
+      }
+   });*/
+
+
   
   
 
@@ -55,27 +74,78 @@ io.on('connection', (socket) => {
       
       });
 
+
       socket.on('NoOpinions' , () => {
+
+        //Users.create(u);
+        var now1 = new Date();
+        console.log(name, 'btnclicked', now1);
+
+
+        //  Users.updateOne({ 'name': name }, {'$set':{'now1': now1}},function(err) {
+         // if(err) {
+           // console.log(err);
+          //} else {
+            //console.log("update success.");
+         // }
+       //});
+
+
+        var savedata1 = new Users({
+         
+          'name': name,
+          'now1' : now1
+            
+        }).save(function(err,result){
+          if (err) throw err;
+
+        
+        });
+
+
+        //onlineUsers.set(u.id, now);
+        //console.log(onlineUsers);
+
+
         io.emit('NoOpinions', buildEmitData(u));
       });
 
+
       socket.on('ShowName' , () => {
+
+       // Users.create(u);
+
+       var now2 = new Date();
+        console.log(name, 'btn2clicked', now2);
+
+        var savedata2 = new Users({
+          'name': name,
+          'now2' : now2
+        }).save(function(err,result){
+          if (err) throw err;
+        });
+
+       /* Users.updateOne({ 'name': name }, {'$set':{'now2': now2}},function(err) {
+          if(err) {
+            console.log(err);
+          } else {
+            console.log("update success.");
+          }
+       });*/
+
         io.emit('ShowName' , buildEmitData(u));
+
       });
 
-      //socket.on('HaveOpinions' , () => {
-        //io.emit('HaveOpinions' , buildEmitData(u));
-     // });
-
-      //socket.on('HaveOpinions2', () => {
-        //io.emit('HaveOpinions2', buildEmitData(u));
-      //});
+     
+      
       
     });
   
 
     function buildEmitData(u) {
       return { id: u.id, name: u.name };
+     //return { id: u.id, name: u.name, now: u.Date };
      
     }
 
