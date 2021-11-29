@@ -71,13 +71,6 @@
     padding: 0;
   }
 
-  /*@media only screen and (max-device-width : 480px) {
-
-  	
-ul {
- 		  width:100%;
-  	}
-  }*/
 
 
   html {
@@ -108,27 +101,7 @@ ul {
     overflow: hidden;
   }
 
-  /*.btn-slip {
-  display: inline-block;
-  padding: 12px 12px;
-  font-weight: bold;
-  border-radius: 4px;
-  background-color: #6A91C1;
-  box-shadow: 0px 2px 2px 1px #CCCCCC;
-  border-bottom: solid 5px #516C8D;
-  -webkit-transition: none;
-  transition: none;
-  color: #fff;
-
-}
-
-.btn-slip:active {
-  box-shadow: none;
-  position: relative;
-  border-bottom: none;
-  top: 7px;
-}*/
-
+  
   .btn {
     display: inline-block;
     padding: 12px 12px;
@@ -221,50 +194,51 @@ ul {
     socket.emit("nickname", name);
     alert('こんにちは' + name + 'さん！');
 
-   socket.on('hiddenUsers', function(hiddenUsers,onlineUsers)  {
+    socket.on('hiddenUsers', function (hiddenUsers, onlineUsers) {
 
-    //onlineUsers.forEach((value) => {
-      //console.log(value.id);
+      const parent = document.getElementById('loggedInUsers');
+      while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+      };
 
-      //hiddenUsers.forEach((value2) =>{
-      //console.log(value2)
+      function compare(a, b) {
+        const nameA = a.name.toUpperCase();
+        const nameB = b.name.toUpperCase();
+        let comparison = 0;
+        if (nameA > nameB) {
+          comparison = 1;
+        } else if (nameA < nameB) {
+          comparison = -1;
+        }
+        return comparison;
+      }
 
-     // if (value.id == value2){
-      //  console.log(value.name);
 
 
-      //}
-    //});
-    //});
+      onlineUsers.sort(compare);
+
+      for (let item of onlineUsers) {
+        const li = `<li id="${item.id}">${item.name}</li>`;
 
 
-  });
+              document.getElementById('loggedInUsers').insertAdjacentHTML('beforeend', li);
 
-   
-  
+               //もしonlineusersがhiddenusersのidと一致すれば表示しない
+
+
+      }
+
+
+    });
+
+
+
 
 
 
     socket.on('loggedInUsers', function (onlineUsers) {
-      //socket.on('hiddenUsers', function(hiddenUsers){
-
-      //for (let value of hiddenUsers) {
-      //console.log(value);
-      //}
-
-     // socket.on('hiddenUsers', function(hiddenUsers) {
-    //console.log(hiddenUsers);
-
-     // });
-
-   //  socket.on('hiddenUsers', function(hiddenUsers)  { 
-    //console.log(hiddenUsers);
-    
-
- // });
 
       const parent = document.getElementById('loggedInUsers');
-      //console.log(parent);
       while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
       };
@@ -291,21 +265,18 @@ ul {
 
       for (let item of onlineUsers) {
         const li = `<li id="${item.id}">${item.name}</li>`;
-        //for(let item2 of hiddenUsers){
-          //const li2 = `<li id="${item.id}">${item.name}</li>`;
-          //li2.style.visibility = 'hidden';
-        
+      
+
         console.log(item);
-       // console.log(item2);
+      
 
 
         document.getElementById('loggedInUsers').insertAdjacentHTML('beforeend', li);
-        //}
-
+       
       }
 
     });
-    // });
+   
 
 
 
@@ -381,59 +352,15 @@ ul {
 
       setTimeout(visible, 30000);
 
-      /* let nowTime = 0;
- 
-       nowTime = (Date.now() - startTime) / 1000;
- 
-       if (nowTime == 30) {
- 
-         console.log('Timeout')
-         socket.emit('Timeout');
- 
-       }*/
-
-      //追加部分
-      // socket.emit('HideNames')
-
-      // socket.emit('Timeout');
+     
 
 
-    });//ここまで
+    });
 
 
-    //hiddenUsers.add(u.id);
-
-    //  console.log(hiddenUsers);
-
-    //追加部分
-    /*socket.on('HideNames', (u) => {
-
-      const li = document.getElementById(u.id);
-
-      const visible = function () {
-        li.style.visibility = 'visible';
-
-      };*/
+    
 
 
-
-    //setTimeout(visible, 30000); 
-
-    //hiddenUsers.delete(u.id);
-
-    /* const startTime = Date.now();
-     let nowTime = 0;
-
-     nowTime = (Date.now() - startTime) / 1000;
-
-     if (nowTime == 30) {
-
-       socket.emit('Timeout')
-
-     }
-
-
-   }); //ここまで*/
 
     socket.on('ShowName', (u) => {
       const li = document.getElementById(u.id);

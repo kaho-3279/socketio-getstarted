@@ -75,14 +75,12 @@ io.on('connection', (socket) => {
       onlineUsers.set(u.id, u);
       console.log(onlineUsers);
 
-  
-
       //if(hiddenUsers.has(u.id) ){
       // io.emit("hiddenUsers", u.id);
         //console.log(u.id);
       //}
 
-     // console.log(hiddenUsers.has(u));
+
 
 
       if(hiddenUsers.size != 0){
@@ -120,7 +118,6 @@ io.on('connection', (socket) => {
       
 
         console.log(hiddenUsers);
-        //console.log(hiddenUsers.has(u));
 
         const timeout = function () {
 
@@ -156,12 +153,7 @@ io.on('connection', (socket) => {
 
       });
 
-      //
-      // socket.on('HideNames', ()=> {
-      //io.emit('HideNames',buildEmitData(u))
-      //});
-      //
-
+      
 
       socket.on('ShowName', () => {
 
@@ -207,7 +199,7 @@ io.on('connection', (socket) => {
 
     });
 
-  //});//
+
 
   });
 
