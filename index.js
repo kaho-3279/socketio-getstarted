@@ -182,7 +182,7 @@ io.on('connection', (socket) => {
 
 
     function buildEmitData(u) {
-      return { id: u.id, name: u.name };
+      return { id: u.id, name: u.name, hidden: hiddenUsers.has(u.id) };
 
 
     }

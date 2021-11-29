@@ -101,7 +101,7 @@
     overflow: hidden;
   }
 
-  
+
   .btn {
     display: inline-block;
     padding: 12px 12px;
@@ -218,15 +218,14 @@
       onlineUsers.sort(compare);
 
       for (let item of onlineUsers) {
+        
+        if(!item.hidden){
         const li = `<li id="${item.id}">${item.name}</li>`;
 
-
-              document.getElementById('loggedInUsers').insertAdjacentHTML('beforeend', li);
-
-               //もしonlineusersがhiddenusersのidと一致すれば表示しない
-
+        document.getElementById('loggedInUsers').insertAdjacentHTML('beforeend', li);
 
       }
+    }
 
 
     });
@@ -265,18 +264,18 @@
 
       for (let item of onlineUsers) {
         const li = `<li id="${item.id}">${item.name}</li>`;
-      
+
 
         console.log(item);
-      
+
 
 
         document.getElementById('loggedInUsers').insertAdjacentHTML('beforeend', li);
-       
+
       }
 
     });
-   
+
 
 
 
@@ -299,6 +298,7 @@
       } else if (document.getElementById('p1').value == 0) {
         document.getElementById('p1').value = 100;
         btn2.checked = true;
+    
       }
 
 
@@ -309,6 +309,8 @@
       document.getElementById('p1').value = 100;
 
     }
+
+
 
 
 
@@ -339,8 +341,6 @@
 
     socket.on('NoOpinions', (u) => {
 
-      // const startTime = Date.now();
-
 
       const visible = function () {
         li.style.visibility = 'visible';
@@ -352,14 +352,7 @@
 
       setTimeout(visible, 30000);
 
-     
-
-
     });
-
-
-    
-
 
 
     socket.on('ShowName', (u) => {
@@ -367,13 +360,7 @@
       li.style.visibility = 'visible';
 
 
-
-
     });
-
-
-
-
 
 
 
