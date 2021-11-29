@@ -4,8 +4,7 @@
 <head>
   <title>NP button</title>
   <link rel="stylesheet" type="text/css" href="./index.css">
-  <meta name="viewport"
-  content="width=max-device-width,
+  <meta name="viewport" content="width=max-device-width,
      height=480,
      initial-scale=1.0,
      minimum-scale=1.0,
@@ -191,21 +190,8 @@ ul {
   }
 
   .add-control #npbutton:checked~.btn-npbutton {
-   display: none;
+    display: none;
   }
-
-
-  /* progress{
-    -webkit-appearance: none;
-    width: 200px;
-    height: 7px;
-    margin: 0 auto;
-    background-color:  #24af59;
-    border-radius: 10px;
-  }
-  ::-webkit-progress-value{
- background-color:  #1ea351;
-  }*/
 </style>
 
 <body>
@@ -226,7 +212,7 @@ ul {
   <script>
     var socket = io();
     var input = document.getElementById('input');
-    //var intervalID;
+
 
     var name = prompt("学籍番号と名前を入力してください");
     if (name == "") name = "unknown";
@@ -235,11 +221,50 @@ ul {
     socket.emit("nickname", name);
     alert('こんにちは' + name + 'さん！');
 
+   socket.on('hiddenUsers', function(hiddenUsers,onlineUsers)  {
+
+    //onlineUsers.forEach((value) => {
+      //console.log(value.id);
+
+      //hiddenUsers.forEach((value2) =>{
+      //console.log(value2)
+
+     // if (value.id == value2){
+      //  console.log(value.name);
+
+
+      //}
+    //});
+    //});
+
+
+  });
+
+   
+  
+
 
 
     socket.on('loggedInUsers', function (onlineUsers) {
+      //socket.on('hiddenUsers', function(hiddenUsers){
+
+      //for (let value of hiddenUsers) {
+      //console.log(value);
+      //}
+
+     // socket.on('hiddenUsers', function(hiddenUsers) {
+    //console.log(hiddenUsers);
+
+     // });
+
+   //  socket.on('hiddenUsers', function(hiddenUsers)  { 
+    //console.log(hiddenUsers);
+    
+
+ // });
 
       const parent = document.getElementById('loggedInUsers');
+      //console.log(parent);
       while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
       };
@@ -263,17 +288,24 @@ ul {
 
 
 
+
       for (let item of onlineUsers) {
         const li = `<li id="${item.id}">${item.name}</li>`;
+        //for(let item2 of hiddenUsers){
+          //const li2 = `<li id="${item.id}">${item.name}</li>`;
+          //li2.style.visibility = 'hidden';
+        
         console.log(item);
+       // console.log(item2);
 
 
         document.getElementById('loggedInUsers').insertAdjacentHTML('beforeend', li);
-
+        //}
 
       }
-    });
 
+    });
+    // });
 
 
 
@@ -298,9 +330,7 @@ ul {
         btn2.checked = true;
       }
 
-      //if (document.getElementById('p1').value == 100){
-      //clearInterval(intervalID);
-      //}
+
     }
 
     function proc2() {
@@ -316,10 +346,7 @@ ul {
 
       socket.emit('NoOpinions')
 
-      //var now = new Date();
-      //console.log('btnclicked', now);
 
-      //console.log('click');
 
 
     });
@@ -327,64 +354,98 @@ ul {
     btn2.addEventListener("click", e => {
 
       socket.emit('ShowName')
-     
-      //var now = new Date();
-      //console.log('btn2clicked', now);
+
+
 
     });
 
 
 
 
-    //btn.addEventListener("dblclick", e => {
 
-    //socket.emit('HaveOpinions')
-
-
-    // console.log('dblclick');
-
-    //});
 
 
 
     socket.on('NoOpinions', (u) => {
-      console.log(u);
+
+      // const startTime = Date.now();
+
 
       const visible = function () {
         li.style.visibility = 'visible';
-
-        //btn.style.visibility = 'visible';
-        //btn2.style.visibility = 'hidden';
 
       };
 
       const li = document.getElementById(u.id);
       li.style.visibility = 'hidden';
-      //li.style.opacity = 0;
 
       setTimeout(visible, 30000);
 
+      /* let nowTime = 0;
+ 
+       nowTime = (Date.now() - startTime) / 1000;
+ 
+       if (nowTime == 30) {
+ 
+         console.log('Timeout')
+         socket.emit('Timeout');
+ 
+       }*/
 
-      //btn.style.visibility = 'visible';
-      //btn2.style.visibility = 'hidden';
+      //追加部分
+      // socket.emit('HideNames')
 
-    });
+      // socket.emit('Timeout');
+
+
+    });//ここまで
+
+
+    //hiddenUsers.add(u.id);
+
+    //  console.log(hiddenUsers);
+
+    //追加部分
+    /*socket.on('HideNames', (u) => {
+
+      const li = document.getElementById(u.id);
+
+      const visible = function () {
+        li.style.visibility = 'visible';
+
+      };*/
+
+
+
+    //setTimeout(visible, 30000); 
+
+    //hiddenUsers.delete(u.id);
+
+    /* const startTime = Date.now();
+     let nowTime = 0;
+
+     nowTime = (Date.now() - startTime) / 1000;
+
+     if (nowTime == 30) {
+
+       socket.emit('Timeout')
+
+     }
+
+
+   }); //ここまで*/
 
     socket.on('ShowName', (u) => {
       const li = document.getElementById(u.id);
       li.style.visibility = 'visible';
 
-      //btn.style.visibility = 'hidden';
-      //btn2.style.visibility = 'visible';
+
 
 
     });
 
 
-   // socket.on('HaveOpinions', (u) => {
-     // const li = document.getElementById(u.id);
-      //li.style.visibility = 'visible';
-    //});
+
 
 
 

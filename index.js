@@ -24,7 +24,7 @@ const userSchema = mongoose.Schema(
     now2: Date
     //date: { type: Date, default: Date.now},
   },
- // { timestamps: true }
+  // { timestamps: true }
 );
 const Users = mongoose.model("Post", userSchema);
 
@@ -34,119 +34,165 @@ app.get('/', (req, res) => {
 
 
 const onlineUsers = new Map();
+const hiddenUsers = new Set();
+
 
 
 io.on('connection', (socket) => {
   console.log('a user connected');
+  //console.log(hiddenUsers);
+  // if(hiddenUsers.size != 0){
+   // if(hiddenUsers.has(u) = true){
+     // console.log("ok");
+    //}
+
+  //io.emit("hiddenUsers", Array.from(hiddenUsers.values()));
+  //console.log(hiddenUsers);
+ // }
 
   socket.on("nickname", (name) => {
-    //if (!name) name = "unknown" 
-
-    
-    const u = { name};
-    //const u = { name, now};
-
-   /* Users.remove({ name: 'おかもと' }, function(err) {
-      if(err) {
-        console.log(err);
-      } else {
-        console.log("delete success.");
-      }
-   });*/
-
-
-  
   
 
-    Users.findOneAndUpdate({ name: name },{}, { upsert: true, new: true }, (err, u) => {
+
+
+
+    const u = { name };
+
+
+    /* Users.remove({ name: '' }, function(err) {
+       if(err) {
+         console.log(err);
+       } else {
+         console.log("delete success.");
+       }
+    });*/
+
+
+
+
+
+    Users.findOneAndUpdate({ name: name }, {}, { upsert: true, new: true }, (err, u) => {
       onlineUsers.set(u.id, u);
       console.log(onlineUsers);
+
+  
+
+      //if(hiddenUsers.has(u.id) ){
+      // io.emit("hiddenUsers", u.id);
+        //console.log(u.id);
+      //}
+
+     // console.log(hiddenUsers.has(u));
+
+
+      if(hiddenUsers.size != 0){
+
+        
+ 
+
+        io.emit("hiddenUsers", Array.from(hiddenUsers.values()),Array.from(onlineUsers.values()).map(buildEmitData));
+        console.log(hiddenUsers);
+     
+        }else{
+
+
       io.emit("loggedInUsers", Array.from(onlineUsers.values()).map(buildEmitData));
+        }
+
+      
+
       socket.emit("namelist", u);
 
       socket.on('disconnect', () => {
         onlineUsers.delete(u.id);
         console.log('user disconnected');
         console.log(onlineUsers);
-  
-       
+
+
         io.emit("loggedInUsers", Array.from(onlineUsers.values()).map(buildEmitData));
-      
+
       });
 
 
-      socket.on('NoOpinions' , () => {
+      socket.on('NoOpinions', () => {
 
-        //Users.create(u);
+        hiddenUsers.add(u.id);
+      
+
+        console.log(hiddenUsers);
+        //console.log(hiddenUsers.has(u));
+
+        const timeout = function () {
+
+          hiddenUsers.delete(u.id);
+
+          console.log(hiddenUsers);
+        };
+
+        setTimeout(timeout, 30000);
+
+
         var now1 = new Date();
         console.log(name, 'btnclicked', now1);
 
 
-        //  Users.updateOne({ 'name': name }, {'$set':{'now1': now1}},function(err) {
-         // if(err) {
-           // console.log(err);
-          //} else {
-            //console.log("update success.");
-         // }
-       //});
-
 
         var savedata1 = new Users({
-         
+
           'name': name,
-          'now1' : now1
-            
-        }).save(function(err,result){
+          'now1': now1
+
+        }).save(function (err, result) {
           if (err) throw err;
 
-        
+
         });
 
 
-        //onlineUsers.set(u.id, now);
-        //console.log(onlineUsers);
+
 
 
         io.emit('NoOpinions', buildEmitData(u));
+
       });
 
+      //
+      // socket.on('HideNames', ()=> {
+      //io.emit('HideNames',buildEmitData(u))
+      //});
+      //
 
-      socket.on('ShowName' , () => {
 
-       // Users.create(u);
+      socket.on('ShowName', () => {
 
-       var now2 = new Date();
+        hiddenUsers.delete(u.id);
+        console.log(hiddenUsers);
+
+        var now2 = new Date();
         console.log(name, 'btn2clicked', now2);
 
         var savedata2 = new Users({
           'name': name,
-          'now2' : now2
-        }).save(function(err,result){
+          'now2': now2
+        }).save(function (err, result) {
           if (err) throw err;
         });
 
-       /* Users.updateOne({ 'name': name }, {'$set':{'now2': now2}},function(err) {
-          if(err) {
-            console.log(err);
-          } else {
-            console.log("update success.");
-          }
-       });*/
 
-        io.emit('ShowName' , buildEmitData(u));
+
+        io.emit('ShowName', buildEmitData(u));
 
       });
 
-     
-      
-      
+
+
     });
-  
+
 
     function buildEmitData(u) {
       return { id: u.id, name: u.name };
-     //return { id: u.id, name: u.name, now: u.Date };
-     
+
+
     }
 
 
@@ -161,7 +207,7 @@ io.on('connection', (socket) => {
 
     });
 
-
+  //});//
 
   });
 
@@ -175,8 +221,4 @@ server.listen(port);
 
 
 
-
-//server.listen(3000, () => {
-  //console.log('listening on *:3000');
-//});
 
