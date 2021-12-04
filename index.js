@@ -133,6 +133,12 @@ io.on('connection', (socket) => {
 
         }).save(function (err, result) {
           if (err) throw err;
+<<<<<<< Updated upstream
+=======
+
+
+          
+>>>>>>> Stashed changes
         });
 
 
