@@ -83,19 +83,11 @@ io.on('connection', (socket) => {
 
 
 
-      if(hiddenUsers.size != 0){
-
-        
- 
-
-        io.emit("hiddenUsers", Array.from(hiddenUsers.values()),Array.from(onlineUsers.values()).map(buildEmitData));
-        console.log(hiddenUsers);
-     
-        }else{
+      
 
 
       io.emit("loggedInUsers", Array.from(onlineUsers.values()).map(buildEmitData));
-        }
+      
 
       
 
@@ -153,7 +145,13 @@ io.on('connection', (socket) => {
 
       });
 
-      
+      socket.on('ShowName30', () => {
+        hiddenUsers.delete(u.id);
+
+        io.emit('ShowName30', buildEmitData(u));
+      })
+
+    
 
       socket.on('ShowName', () => {
 
@@ -175,7 +173,6 @@ io.on('connection', (socket) => {
         io.emit('ShowName', buildEmitData(u));
 
       });
-
 
 
     });
