@@ -165,6 +165,15 @@
   .add-control #npbutton:checked~.btn-npbutton {
     display: none;
   }
+
+  .comment{
+    margin-top: 40px;
+    
+  }
+
+
+  
+
 </style>
 
 <body>
@@ -177,6 +186,9 @@
   </div>
   <div class="progress">
     <progress id="p1" value="100" max="100">0%</progress>
+  </div>
+  <div class="comment">
+    <textarea name="comment" cols="40" rows="7" placeholder="発言したいことリスト" wrap="hard"></textarea>
   </div>
   <script src="/socket.io/socket.io.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -193,6 +205,10 @@
 
     socket.emit("nickname", name);
     alert('こんにちは' + name + 'さん！');
+
+   
+
+    
 
 
     socket.on('loggedInUsers', function (onlineUsers) {
@@ -337,7 +353,7 @@
     socket.on('ShowName', (u) => {
       const li = document.getElementById(u.id);
       li.style.visibility = 'visible';
-      
+
     });
 
 
