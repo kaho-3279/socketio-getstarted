@@ -32,30 +32,28 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
 
+app.get('/not30', (req, res) => {
+  res.sendFile(__dirname + '/not30.html');
+});
+
+app.get('/teacher', (req, res) => {
+  res.sendFile(__dirname + '/teacher.html');
+});
+
 
 const onlineUsers = new Map();
 const hiddenUsers = new Set();
 
 
-
 io.on('connection', (socket) => {
   console.log('a user connected');
-  //console.log(hiddenUsers);
-  // if(hiddenUsers.size != 0){
-   // if(hiddenUsers.has(u) = true){
-     // console.log("ok");
-    //}
-
-  //io.emit("hiddenUsers", Array.from(hiddenUsers.values()));
-  //console.log(hiddenUsers);
- // }
+ 
+ /* socket.on("teacherName", (name2) => {
+    io.emit("teacherName", (name2));
+  });*/
 
   socket.on("nickname", (name) => {
-  
-
-
-
-
+ 
     const u = { name };
 
 
@@ -75,17 +73,7 @@ io.on('connection', (socket) => {
       onlineUsers.set(u.id, u);
       console.log(onlineUsers);
 
-      //if(hiddenUsers.has(u.id) ){
-      // io.emit("hiddenUsers", u.id);
-        //console.log(u.id);
-      //}
-
-
-
-
-      
-
-
+     
       io.emit("loggedInUsers", Array.from(onlineUsers.values()).map(buildEmitData));
       
 
@@ -103,6 +91,15 @@ io.on('connection', (socket) => {
        
 
       });
+    
+
+      
+
+     /* socket.on('change',() =>{
+        socket.emit('change', buildEmitData(u));
+      });*/
+
+      
 
 
       socket.on('NoOpinions', () => {
@@ -144,11 +141,11 @@ io.on('connection', (socket) => {
 
       });
 
-      socket.on('ShowName30', () => {
+     /* socket.on('ShowName30', () => {
         hiddenUsers.delete(u.id);
 
         io.emit('ShowName30', buildEmitData(u));
-      })
+      })*/
 
     
 
@@ -173,9 +170,18 @@ io.on('connection', (socket) => {
 
       });
 
+      socket.on('RedisplayAll', () => {
+        hiddenUsers.clear();
+        console.log(hiddenUsers);
+
+        io.emit('RedisplayAll', Array.from(onlineUsers.values()).map(buildEmitData));
+        //io.emit("loggedInUsers", Array.from(onlineUsers.values()).map(buildEmitData));
+      });
+
 
     });
 
+    
 
     function buildEmitData(u) {
       return { id: u.id, name: u.name, hidden: hiddenUsers.has(u.id) };
