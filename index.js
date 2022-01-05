@@ -21,7 +21,8 @@ const userSchema = mongoose.Schema(
   {
     name: String,
     now1: Date,
-    now2: Date
+    now2: Date,
+    now3: Date
     //date: { type: Date, default: Date.now},
   },
   // { timestamps: true }
@@ -172,6 +173,16 @@ io.on('connection', (socket) => {
       socket.on('RedisplayAll', () => {
         hiddenUsers.clear();
         console.log(hiddenUsers);
+
+        var now3 = new Date();
+        console.log(name, 'btn3clicked', now3);
+
+        var savedata3 = new Users({
+          'name': name,
+          'now3': now3
+        }).save(function (err, result) {
+          if (err) throw err;
+        });
 
         io.emit('RedisplayAll', Array.from(onlineUsers.values()).map(buildEmitData));
         //io.emit("loggedInUsers", Array.from(onlineUsers.values()).map(buildEmitData));
