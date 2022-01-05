@@ -48,16 +48,18 @@ const hiddenUsers = new Set();
 io.on('connection', (socket) => {
   console.log('a user connected');
  
- /* socket.on("teacherName", (name2) => {
+  /*socket.on("teacherName", (name2) => {
     io.emit("teacherName", (name2));
   });*/
 
   socket.on("nickname", (name) => {
  
     const u = { name };
+    
+    
 
 
-    /* Users.remove({ name: '' }, function(err) {
+   /*Users.remove({ name: '' }, function(err) {
        if(err) {
          console.log(err);
        } else {
@@ -73,7 +75,6 @@ io.on('connection', (socket) => {
       onlineUsers.set(u.id, u);
       console.log(onlineUsers);
 
-     
       io.emit("loggedInUsers", Array.from(onlineUsers.values()).map(buildEmitData));
       
 
@@ -91,9 +92,7 @@ io.on('connection', (socket) => {
        
 
       });
-    
 
-      
 
      /* socket.on('change',() =>{
         socket.emit('change', buildEmitData(u));
@@ -185,6 +184,7 @@ io.on('connection', (socket) => {
 
     function buildEmitData(u) {
       return { id: u.id, name: u.name, hidden: hiddenUsers.has(u.id) };
+
 
 
     }

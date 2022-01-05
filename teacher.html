@@ -207,10 +207,11 @@
   <ul id="loggedInUsers"></ul>
   <div class="add-control">
     
-      <a class="redisplay" id="redisplay" onclick="proc3();">みんな復活</a>
+      <a class="redisplay" id="redisplay" >みんな復活</a>
   </div>
   
   <script src="/socket.io/socket.io.js"></script>
+  <script src="common.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
@@ -219,8 +220,8 @@
     var input = document.getElementById('input');
 
     var name = prompt("名前を入力してください");
-    if (name == "") name = "先生";
-    if (name == "null") name = "先生";
+    if (name == "") name = "teacher";
+    if (name == "null") name = "teacher";
 
     socket.emit("nickname", name);
     alert('こんにちは' + name + 'さん！');
@@ -233,7 +234,7 @@
     socket.emit("teacherName", name2);
     alert('こんにちは' + name2 + 'さん！');*/
 
-   /* socket.on('teacherName', (name2) =>{
+    /*socket.on('teacherName', (name2) =>{
     document.getElementById("teacherName").innerHTML = name2;
     });*/
 
@@ -280,14 +281,8 @@
 
 
     document.getElementById(item.id).style.visibility = 'hidden';
-
-
-
-
 }
-
-      
-    }
+      }
 
     });
 
@@ -302,7 +297,7 @@
    /* const btn = document.getElementById('npbutton');
     const btn2 = document.getElementById('pbutton');*/
     const btn3 = document.getElementById('redisplay');
-    let timer
+   // let timer
 
     /*function proc1() {
 
@@ -384,10 +379,10 @@
 
     });
 
-    socket.on('ShowName30', (u)=> {
+    /*socket.on('ShowName30', (u)=> {
       const li = document.getElementById(u.id);
       li.style.visibility = 'visible';
-    })
+    })*/
 
 
     socket.on('ShowName', (u) => {

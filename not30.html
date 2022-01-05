@@ -192,6 +192,7 @@
     <textarea name="comment" cols="40" rows="7" placeholder="発言したいことリスト" wrap="hard"></textarea>
   </div>
   <script src="/socket.io/socket.io.js"></script>
+  <script src="common.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
@@ -212,7 +213,7 @@
     });*/
 
 
-    socket.on('loggedInUsers', function (onlineUsers) {
+  socket.on('loggedInUsers', function (onlineUsers) { 
      
 
       const parent = document.getElementById('loggedInUsers');
