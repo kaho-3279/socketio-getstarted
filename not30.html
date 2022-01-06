@@ -90,13 +90,6 @@
   }
 
 
-  /*main {
-    margin-left: auto;
-    margin-right: auto;
-    text-align: left;
-    text-align: center;
-  }*/
-
   #wrap {
     overflow: hidden;
   }
@@ -166,14 +159,26 @@
     display: none;
   }
 
-  .comment{
+  /*.comment{
     margin-top: 40px;
-    border: #cccccc;
     border-radius: 6px; 
     
-  }
+  }*/
 
+  .comment {
+  margin-top: 40px;
+  background-color: #fff; /* 背景色 */
+  background-image: linear-gradient(90deg, transparent 0%, transparent 50%, #fff 50%, #fff 100%), /* 点線1の色 */
+                    linear-gradient(180deg, #ccc 1px, transparent 1px); /* 点線2の色と太さ */
+  background-size: 8px 100%, /* 点線1のサイズ */
+                   100% 2.0em; /* 点線2のサイズ */
+  line-height: 2.0em; /* 文字の高さ */
+  padding-bottom: 1px;
+ /* border: double 5px #5c98d4;*/
+  border-left: solid 10px #5bb7ae ;
+}
 
+  
   
 
 </style>
@@ -187,10 +192,7 @@
     <input type="radio" class="radio" id="pbutton" name="btn" checked="checked" onclick="proc2();" /> <label
       class="btn btn-pbutton" for="pbutton">復活</label>
   </div>
-  
-  <div class="comment">
-    <textarea name="comment" cols="40" rows="7" placeholder="発言したいことリスト" wrap="hard"></textarea>
-  </div>
+    <textarea class="comment" cols="40" rows="7" placeholder="発言したいことリスト" wrap="hard"></textarea>
   <script src="/socket.io/socket.io.js"></script>
   <script src="common.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
